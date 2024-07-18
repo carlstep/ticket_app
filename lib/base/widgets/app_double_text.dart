@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
 
-// a reusable widget to display text headings
+// a reusable widget to display section text headings
 // passes bigText variable and smallText variable
 //
 class AppDoubleText extends StatelessWidget {
