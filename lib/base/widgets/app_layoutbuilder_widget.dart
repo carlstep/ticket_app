@@ -4,18 +4,19 @@ import 'package:flutter/material.dart';
 class AppLayoutBuilderWidget extends StatelessWidget {
   // randomDivider variable passed to parent widget
   final int randomDivider;
+  final double dashWidth;
 
   const AppLayoutBuilderWidget({
-    super.key,
+    Key? key,
     required this.randomDivider,
-  });
+    this.dashWidth = 2,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     // LayoutBuilder adjusts the layout based on the constraints provided by the parent widget
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-      print('${(constraints.constrainWidth() / randomDivider).floor()}');
       // Flex controls the distribution of available space
       // must have a direction property
       return Flex(
@@ -29,11 +30,11 @@ class AppLayoutBuilderWidget extends StatelessWidget {
           // .floor() >> method to round down the result to an integer (the integer is divided by randomDivider)
           (constraints.constrainWidth() / randomDivider).floor(),
           // at each index, returns a SizedBox
-          (index) => const SizedBox(
+          (index) => SizedBox(
             // width defines the length of the divider
             // height defines the thickness
-            width: 4,
-            height: 2,
+            width: dashWidth,
+            height: 1,
             child: DecoratedBox(decoration: BoxDecoration(color: Colors.white)),
           ),
           // The AppLayoutBuilderWidget allows for dynamic generation of dividers based on the available space.

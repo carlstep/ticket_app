@@ -16,6 +16,7 @@ class AppStyle {
 
   // ticket view color
   static Color ticketBlue = const Color(0xFF526799);
+  static Color ticketOrange = const Color(0xFFF37B67);
 
   static TextStyle textStyle =
       TextStyle(fontSize: 18, color: textColor, fontWeight: FontWeight.w500);
@@ -34,6 +35,11 @@ class AppStyle {
 
   static TextStyle headlineStyle3 = const TextStyle(
     fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle headlineStyle4 = const TextStyle(
+    fontSize: 14,
     fontWeight: FontWeight.w500,
   );
 }
