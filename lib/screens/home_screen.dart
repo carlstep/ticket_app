@@ -95,7 +95,9 @@ class HomeScreen extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: ticketList.map((singleTicket) {
-                      return TicketView(ticket: singleTicket);
+                      return TicketView(
+                        ticket: singleTicket,
+                      );
                     }).toList(),
                   ),
                 ),

@@ -14,9 +14,15 @@ class TicketView extends StatelessWidget {
   // map to display the ticket data
   final Map<String, dynamic> ticket;
 
+  // wholeScreen variable determines the position of tickets
+  // all_tickets >> is true (is centered)
+  // ticket_view >> is true (is 0) or is false (16)
+  final bool wholeScreen;
+
   const TicketView({
     super.key,
     required this.ticket,
+    this.wholeScreen = false,
   });
 
   @override
@@ -26,7 +32,7 @@ class TicketView extends StatelessWidget {
       height: 188,
       width: size,
       child: Container(
-        margin: const EdgeInsets.only(right: 16),
+        margin: EdgeInsets.only(right: wholeScreen ? 0 : 16),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
