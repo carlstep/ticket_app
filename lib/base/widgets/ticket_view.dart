@@ -1,5 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:ticket_app/base/res/styles/app_styles.dart';
+
 import 'package:ticket_app/base/widgets/app_column_text_layout.dart';
 import 'package:ticket_app/base/widgets/app_layoutbuilder_widget.dart';
 import 'package:ticket_app/base/widgets/big_circle.dart';
@@ -8,7 +11,13 @@ import 'package:ticket_app/base/widgets/text_style_fourth.dart';
 import 'package:ticket_app/base/widgets/text_style_third.dart';
 
 class TicketView extends StatelessWidget {
-  const TicketView({super.key});
+  // map to display the ticket data
+  final Map<String, dynamic> ticket;
+
+  const TicketView({
+    super.key,
+    required this.ticket,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +30,7 @@ class TicketView extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // top part of ticket section (blue)
+            // TOP PART of ticket section (blue)
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -35,18 +44,19 @@ class TicketView extends StatelessWidget {
                   // first line - show departure and destination locations with icons
                   Row(
                     children: [
-                      // Text to display departure location
-                      // TextStyleThird requires text property
-                      const TextStyleThird(
-                        text: 'NYC',
+                      TextStyleThird(
+                        // Text to display departure location
+                        // TextStyleThird requires text property
+                        text: ticket['from']['code'],
                       ),
                       Expanded(
                         child: Container(),
                       ),
                       // BigDot... re-usable widget to display circular dot
                       const BigDot(),
-                      // Expanded wraps a Stack widget
+
                       Expanded(
+                        // Expanded wraps a Stack widget
                         // Stack is used for layout, placing widgets on top of each other.
                         child: Stack(
                           children: [
@@ -75,8 +85,8 @@ class TicketView extends StatelessWidget {
                         child: Container(),
                       ),
                       // Text to display destination location
-                      const TextStyleThird(
-                        text: 'LDN',
+                      TextStyleThird(
+                        text: ticket['to']['code'],
                       ),
                     ],
                   ),
@@ -86,29 +96,28 @@ class TicketView extends StatelessWidget {
                   // second line - show departure and destination names with time
                   Row(
                     children: [
-                      // Text to display departure location
-                      const SizedBox(
+                      SizedBox(
+                        // Text to display departure location
                         width: 100,
                         child: TextStyleFourth(
-                          text: 'New York',
+                          text: ticket['from']['name'],
                         ),
                       ),
                       Expanded(
                         child: Container(),
                       ),
-                      // display flight time
-                      const TextStyleFourth(
-                        text: '8H 30M',
+                      TextStyleFourth(
+                        // display flight time
+                        text: ticket['flying_time'],
                       ),
-
                       Expanded(
                         child: Container(),
                       ),
-                      // Text to display destination location
-                      const SizedBox(
+                      SizedBox(
+                        // Text to display destination location
                         width: 100,
                         child: TextStyleFourth(
-                          text: 'New York',
+                          text: ticket['to']['name'],
                           // align - argument set to 'start' by default.
                           // add align argument to set to other than default option
                           align: TextAlign.end,
@@ -116,19 +125,19 @@ class TicketView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Row(
-                    children: [],
-                  ),
+                  // const Row(
+                  //   children: [],
+                  // ),
                 ],
               ),
             ),
-            // middle part of ticket section (orange)
+            // MIDDLE PART of ticket section (orange)
             Container(
               color: AppStyle.ticketOrange,
               child: const Row(
                 children: [
                   BigCircle(
-                    // bool argument is set to false - displays decoration to the left
+                    // bool argument isRight set to false - displays decoration to the left
                     isRight: false,
                   ),
                   // using Expanded with SizedBox (or another widget) takes up the space between
@@ -141,13 +150,13 @@ class TicketView extends StatelessWidget {
                     ),
                   ),
                   BigCircle(
-                    // bool argument is set to true - displays decoration to the right
+                    // bool argument isRight set to true - displays decoration to the right
                     isRight: true,
                   ),
                 ],
               ),
             ),
-            // bottom part of ticket section (orange)
+            // BOTTOM PART of ticket section (orange)
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -156,7 +165,7 @@ class TicketView extends StatelessWidget {
                     bottomLeft: Radius.circular(30),
                     bottomRight: Radius.circular(30)),
               ),
-              child: const Column(
+              child: Column(
                 children: [
                   // Row contains data and lables
                   Row(
@@ -165,7 +174,7 @@ class TicketView extends StatelessWidget {
                       // first AppColumnTextLayout - date data and label
                       AppColumnTextLayout(
                         // topText = data
-                        topText: '1 May',
+                        topText: ticket['date'],
                         // bottomText = label
                         bottomText: 'Date',
                         // alignment position
@@ -174,7 +183,7 @@ class TicketView extends StatelessWidget {
                       // middle AppColumnTextLayout - departure time data and label
                       AppColumnTextLayout(
                         // topText = data
-                        topText: '08:00 AM',
+                        topText: ticket['departure_time'],
                         // bottomText = label
                         bottomText: 'Departure Time',
                         // alignment position
@@ -183,7 +192,7 @@ class TicketView extends StatelessWidget {
                       // end AppColumnTextLayout - seat number data and label
                       AppColumnTextLayout(
                         // topText = data
-                        topText: '23',
+                        topText: ticket['number'].toString(),
                         // bottomText = label
                         bottomText: 'Seat No.',
                         // alignment position

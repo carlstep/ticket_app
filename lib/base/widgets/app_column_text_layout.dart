@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'text_style_fourth.dart';
 import 'text_style_third.dart';
 
-// widget to arrange ticket data (orange section)
+// widget to arrange ticket data (orange section) lower section.
+// display data into a column and re-use
 
 class AppColumnTextLayout extends StatelessWidget {
+  // topText, bottomText, alignment >> are passed thru
   final String topText;
   final String bottomText;
   final CrossAxisAlignment alignment;

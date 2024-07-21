@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
+import 'package:ticket_app/screens/all_tickets.dart';
 
 // a reusable widget to display section text headings
 // passes bigText variable and smallText variable
@@ -25,7 +26,14 @@ class AppDoubleText extends StatelessWidget {
           style: AppStyle.headlineStyle2,
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) => const AllTickets(),
+              ),
+            );
+          },
           child: Text(
             smallText,
             // use copyWith() method... copy some properties of the
