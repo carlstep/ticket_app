@@ -26,14 +26,7 @@ class AppDoubleText extends StatelessWidget {
           style: AppStyle.headlineStyle2,
         ),
         InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => const AllTickets(),
-              ),
-            );
-          },
+          onTap: () => Navigator.pushNamed(context, '/all_tickets'),
           child: Text(
             smallText,
             // use copyWith() method... copy some properties of the

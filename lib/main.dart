@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/bottom_nav_bar.dart';
+import 'package:ticket_app/screens/all_tickets.dart';
 
 void main() {
   // main() is the entry point to the flutter framework
@@ -19,7 +20,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(),
-      home: const BottomNavBar(),
+
+      routes: {
+        '/': (context) => const BottomNavBar(),
+        '/all_tickets': (context) => const AllTickets(),
+      },
     );
   }
 }

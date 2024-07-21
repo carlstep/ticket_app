@@ -101,6 +101,13 @@ class HomeScreen extends StatelessWidget {
                     }).toList(),
                   ),
                 ),
+                const SizedBox(
+                  height: 40,
+                ),
+                const AppDoubleText(
+                  bigText: 'Hotels',
+                  smallText: 'View All',
+                ),
               ],
             ),
           ),
