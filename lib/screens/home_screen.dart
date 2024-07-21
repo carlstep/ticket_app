@@ -1,11 +1,13 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
 import 'package:ticket_app/base/res/media.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
 import 'package:ticket_app/base/utils/all_json.dart';
 import 'package:ticket_app/base/widgets/app_double_text.dart';
 import 'package:ticket_app/base/widgets/ticket_view.dart';
+import 'package:ticket_app/screens/widgets/hotel.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -25,6 +27,7 @@ class HomeScreen extends StatelessWidget {
             // TOP SECTION
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   // HEADER Section
@@ -83,9 +86,11 @@ class HomeScreen extends StatelessWidget {
                   height: 40,
                 ),
                 // Existing Tickets Section
-                const AppDoubleText(
+                AppDoubleText(
                   bigText: 'Upcoming Flights',
                   smallText: 'View All',
+                  // callback function >> routes to all tickets screen
+                  func: () => Navigator.pushNamed(context, '/all_tickets'),
                 ),
                 const SizedBox(
                   height: 20,
@@ -104,9 +109,24 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: 40,
                 ),
-                const AppDoubleText(
+                // DISPLAY HOTELS SECTION
+                AppDoubleText(
                   bigText: 'Hotels',
                   smallText: 'View All',
+                  func: () {},
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: hotelList.map((singleHotel) {
+                      return Hotel(
+                        hotel: singleHotel,
+                      );
+                    }).toList(),
+                  ),
                 ),
               ],
             ),

@@ -55,6 +55,7 @@ List<Map<String, dynamic>> ticketList = [
   },
 ];
 
+// List of maps
 List<Map<String, dynamic>> hotelList = [
   {
     'image': 'hotel_room.png',

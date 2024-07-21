@@ -26,14 +26,14 @@ class AppColumnTextLayout extends StatelessWidget {
       crossAxisAlignment: alignment,
       children: [
         // top element DATA
-        TextStyleThird(
+        TextStyleFourth(
           text: topText,
         ),
         const SizedBox(
           height: 5,
         ),
         // bottom element LABELS
-        TextStyleFourth(
+        TextStyleThird(
           text: bottomText,
         ),
       ],

@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:ticket_app/base/res/styles/app_styles.dart';
-import 'package:ticket_app/screens/all_tickets.dart';
 
 // a reusable widget to display section text headings
 // passes bigText variable and smallText variable
@@ -11,10 +11,14 @@ class AppDoubleText extends StatelessWidget {
     super.key,
     required this.bigText,
     required this.smallText,
+    required this.func,
   });
 
   final String bigText;
   final String smallText;
+
+  // callback function variable
+  final VoidCallback func;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,9 @@ class AppDoubleText extends StatelessWidget {
           style: AppStyle.headlineStyle2,
         ),
         InkWell(
-          onTap: () => Navigator.pushNamed(context, '/all_tickets'),
+          // func passes the function as a property to its parent
+          // creating a function variable means different functions can be used
+          onTap: func,
           child: Text(
             smallText,
             // use copyWith() method... copy some properties of the

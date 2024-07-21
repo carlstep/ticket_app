@@ -14,9 +14,12 @@ class AppStyle {
 
   static Color textColor = const Color(0xFF3b3b3b);
 
-  // ticket view color
+  // ticket view colors
   static Color ticketBlue = const Color(0xFF526799);
   static Color ticketOrange = const Color(0xFFF37B67);
+
+  // hotel view colors
+  static Color kakiColor = const Color(0xFFd2bdb6);
 
   static TextStyle textStyle =
       TextStyle(fontSize: 18, color: textColor, fontWeight: FontWeight.w500);

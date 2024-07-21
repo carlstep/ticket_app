@@ -32,7 +32,10 @@ class TicketView extends StatelessWidget {
       height: 188,
       width: size,
       child: Container(
-        margin: EdgeInsets.only(right: wholeScreen ? 0 : 16),
+        margin: EdgeInsets.only(
+          // using ternery operators... if condition is met, right margin is 0, if condition is not met, right margin is 16
+          right: wholeScreen ? 0 : 16,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -206,7 +209,7 @@ class TicketView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 3,
                   ),
                 ],
