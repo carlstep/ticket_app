@@ -51,8 +51,9 @@ class AppStyle {
     fontWeight: FontWeight.w500,
   );
 
-  static TextStyle headlineStyle4 = const TextStyle(
+  static TextStyle headlineStyle4 = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w500,
+    color: Colors.grey.shade700,
   );
 }
