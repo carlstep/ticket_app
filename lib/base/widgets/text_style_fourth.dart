@@ -6,11 +6,13 @@ import '../res/styles/app_styles.dart';
 class TextStyleFourth extends StatelessWidget {
   final String text;
   final TextAlign align;
+  final bool? isColor;
 
   const TextStyleFourth({
     super.key,
     required this.text,
     this.align = TextAlign.start,
+    this.isColor,
   });
 
   @override
@@ -19,9 +21,11 @@ class TextStyleFourth extends StatelessWidget {
       // text property is passed to the widget
       text,
       textAlign: align,
-      style: AppStyle.headlineStyle4.copyWith(
-        color: Colors.white,
-      ),
+      style: isColor == null
+          ? AppStyle.headlineStyle4.copyWith(
+              color: Colors.white,
+            )
+          : AppStyle.headlineStyle4,
     );
   }
 }

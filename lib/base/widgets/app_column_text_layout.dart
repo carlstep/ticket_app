@@ -12,12 +12,14 @@ class AppColumnTextLayout extends StatelessWidget {
   final String topText;
   final String bottomText;
   final CrossAxisAlignment alignment;
+  final bool? isColor;
 
   const AppColumnTextLayout({
     super.key,
     required this.topText,
     required this.bottomText,
     required this.alignment,
+    this.isColor,
   });
 
   @override
@@ -28,6 +30,7 @@ class AppColumnTextLayout extends StatelessWidget {
         // top element DATA
         TextStyleFourth(
           text: topText,
+          isColor: isColor,
         ),
         const SizedBox(
           height: 5,
@@ -35,6 +38,7 @@ class AppColumnTextLayout extends StatelessWidget {
         // bottom element LABELS
         TextStyleThird(
           text: bottomText,
+          isColor: isColor,
         ),
       ],
     );

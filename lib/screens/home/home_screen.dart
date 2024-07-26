@@ -1,13 +1,13 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'package:ticket_app/base/res/media.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
 import 'package:ticket_app/base/utils/all_json.dart';
+import 'package:ticket_app/base/utils/app_routes.dart';
 import 'package:ticket_app/base/widgets/app_double_text.dart';
 import 'package:ticket_app/base/widgets/ticket_view.dart';
-import 'package:ticket_app/screens/widgets/hotel.dart';
+import 'package:ticket_app/screens/home/widgets/hotel.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -52,7 +52,6 @@ class HomeScreen extends StatelessWidget {
                       height: 60,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.amber,
                           image: const DecorationImage(
                             // having the path referenced here is not good practice.
                             // (AppMedia.logo) gives a reference to media.dart
@@ -90,7 +89,8 @@ class HomeScreen extends StatelessWidget {
                   bigText: 'Upcoming Flights',
                   smallText: 'View All',
                   // callback function >> routes to all tickets screen
-                  func: () => Navigator.pushNamed(context, '/all_tickets'),
+                  func: () =>
+                      Navigator.pushNamed(context, AppRoutes.allTickets),
                 ),
                 const SizedBox(
                   height: 20,

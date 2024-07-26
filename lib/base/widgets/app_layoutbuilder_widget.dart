@@ -5,11 +5,13 @@ class AppLayoutBuilderWidget extends StatelessWidget {
   // randomDivider variable passed to parent widget
   final int randomDivider;
   final double dashWidth;
+  final bool? isColor;
 
   const AppLayoutBuilderWidget({
     super.key,
     required this.randomDivider,
     this.dashWidth = 2,
+    this.isColor,
   });
 
   @override
@@ -35,8 +37,9 @@ class AppLayoutBuilderWidget extends StatelessWidget {
             // height defines the thickness
             width: dashWidth,
             height: 1,
-            child: const DecoratedBox(
-                decoration: BoxDecoration(color: Colors.white)),
+            child: DecoratedBox(
+                decoration: BoxDecoration(
+                    color: isColor == null ? Colors.white : Colors.grey)),
           ),
           // The AppLayoutBuilderWidget allows for dynamic generation of dividers based on the available space.
         ),

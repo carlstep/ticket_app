@@ -5,10 +5,12 @@ import '../res/styles/app_styles.dart';
 
 class TextStyleThird extends StatelessWidget {
   final String text;
+  final bool? isColor;
 
   const TextStyleThird({
     super.key,
     required this.text,
+    this.isColor,
   });
 
   @override
@@ -16,9 +18,9 @@ class TextStyleThird extends StatelessWidget {
     return Text(
       // text property is passed to the widget
       text,
-      style: AppStyle.headlineStyle3.copyWith(
-        color: Colors.white,
-      ),
+      style: isColor == null
+          ? AppStyle.headlineStyle3.copyWith(color: Colors.white)
+          : AppStyle.headlineStyle3,
     );
   }
 }

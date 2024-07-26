@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:ticket_app/base/res/styles/app_styles.dart';
-
 import 'package:ticket_app/base/widgets/app_column_text_layout.dart';
 import 'package:ticket_app/base/widgets/app_layoutbuilder_widget.dart';
 import 'package:ticket_app/base/widgets/big_circle.dart';
@@ -19,10 +18,15 @@ class TicketView extends StatelessWidget {
   // ticket_view >> is true (is 0) or is false (16)
   final bool wholeScreen;
 
+  // if isColor is true, return blue/red ticket
+  // if isColor is false, return white ticket
+  final bool? isColor;
+
   const TicketView({
     super.key,
     required this.ticket,
     this.wholeScreen = false,
+    this.isColor,
   });
 
   @override
@@ -43,7 +47,10 @@ class TicketView extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppStyle.ticketBlue,
+                //
+                color: isColor == null
+                    ? AppStyle.ticketBlue
+                    : AppStyle.ticketWhite,
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30)),
@@ -57,12 +64,15 @@ class TicketView extends StatelessWidget {
                         // Text to display departure location
                         // TextStyleThird requires text property
                         text: ticket['from']['code'],
+                        isColor: isColor,
                       ),
                       Expanded(
                         child: Container(),
                       ),
                       // BigDot... re-usable widget to display circular dot
-                      const BigDot(),
+                      BigDot(
+                        isColor: isColor,
+                      ),
 
                       Expanded(
                         // Expanded wraps a Stack widget
@@ -81,21 +91,26 @@ class TicketView extends StatelessWidget {
                             Center(
                                 child: Transform.rotate(
                               angle: 1.57,
-                              child: const Icon(
+                              child: Icon(
                                 Icons.local_airport_rounded,
-                                color: Colors.white,
+                                color: isColor == null
+                                    ? Colors.white
+                                    : AppStyle.altIconColor,
                               ),
                             ))
                           ],
                         ),
                       ),
-                      const BigDot(),
+                      BigDot(
+                        isColor: isColor,
+                      ),
                       Expanded(
                         child: Container(),
                       ),
                       // Text to display destination location
                       TextStyleThird(
                         text: ticket['to']['code'],
+                        isColor: isColor,
                       ),
                     ],
                   ),
@@ -110,6 +125,7 @@ class TicketView extends StatelessWidget {
                         width: 100,
                         child: TextStyleFourth(
                           text: ticket['from']['name'],
+                          isColor: isColor,
                         ),
                       ),
                       Expanded(
@@ -118,6 +134,7 @@ class TicketView extends StatelessWidget {
                       TextStyleFourth(
                         // display flight time
                         text: ticket['flying_time'],
+                        isColor: isColor,
                       ),
                       Expanded(
                         child: Container(),
@@ -130,6 +147,7 @@ class TicketView extends StatelessWidget {
                           // align - argument set to 'start' by default.
                           // add align argument to set to other than default option
                           align: TextAlign.end,
+                          isColor: isColor,
                         ),
                       ),
                     ],
@@ -142,12 +160,15 @@ class TicketView extends StatelessWidget {
             ),
             // MIDDLE PART of ticket section (orange)
             Container(
-              color: AppStyle.ticketOrange,
-              child: const Row(
+              color: isColor == null
+                  ? AppStyle.ticketOrange
+                  : AppStyle.ticketWhite,
+              child: Row(
                 children: [
                   BigCircle(
                     // bool argument isRight set to false - displays decoration to the left
                     isRight: false,
+                    isColor: isColor,
                   ),
                   // using Expanded with SizedBox (or another widget) takes up the space between
                   // the BigCircle widgets in the Row
@@ -156,11 +177,13 @@ class TicketView extends StatelessWidget {
                     child: AppLayoutBuilderWidget(
                       randomDivider: 10,
                       dashWidth: 6,
+                      isColor: isColor,
                     ),
                   ),
                   BigCircle(
                     // bool argument isRight set to true - displays decoration to the right
                     isRight: true,
+                    isColor: isColor,
                   ),
                 ],
               ),
@@ -169,10 +192,12 @@ class TicketView extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppStyle.ticketOrange,
-                borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30)),
+                color: isColor == null
+                    ? AppStyle.ticketOrange
+                    : AppStyle.ticketWhite,
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(isColor == null ? 30 : 0),
+                    bottomRight: Radius.circular(isColor == null ? 30 : 0)),
               ),
               child: Column(
                 children: [
@@ -184,8 +209,11 @@ class TicketView extends StatelessWidget {
                       AppColumnTextLayout(
                         // topText = data
                         topText: ticket['date'],
+                        isColor: isColor,
+
                         // bottomText = label
                         bottomText: 'Date',
+
                         // alignment position
                         alignment: CrossAxisAlignment.start,
                       ),
@@ -193,6 +221,7 @@ class TicketView extends StatelessWidget {
                       AppColumnTextLayout(
                         // topText = data
                         topText: ticket['departure_time'],
+                        isColor: isColor,
                         // bottomText = label
                         bottomText: 'Departure Time',
                         // alignment position
@@ -202,6 +231,7 @@ class TicketView extends StatelessWidget {
                       AppColumnTextLayout(
                         // topText = data
                         topText: ticket['number'].toString(),
+                        isColor: isColor,
                         // bottomText = label
                         bottomText: 'Seat No.',
                         // alignment position
