@@ -18,7 +18,6 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: AppStyle.bgColor,
       body: ListView(
         // ListView to display the homescreen widgets
-        //
         children: [
           const SizedBox(
             height: 40,
@@ -113,7 +112,9 @@ class HomeScreen extends StatelessWidget {
                 AppDoubleText(
                   bigText: 'Hotels',
                   smallText: 'View All',
-                  func: () {},
+                  func: () {
+                    Navigator.pushNamed(context, AppRoutes.allHotels);
+                  },
                 ),
                 const SizedBox(
                   height: 20,

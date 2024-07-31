@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/bottom_nav_bar.dart';
-import 'package:ticket_app/screens/all_tickets.dart';
+import 'package:ticket_app/screens/home/all_tickets.dart';
 import 'package:ticket_app/screens/ticket/ticket_screen.dart';
 
 import 'base/utils/app_routes.dart';
+import 'screens/home/all_hotels.dart';
 
 void main() {
   // main() is the entry point to the flutter framework
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         AppRoutes.homePage: (context) => const BottomNavBar(),
         AppRoutes.allTickets: (context) => const AllTickets(),
         AppRoutes.ticketScreen: (context) => const TicketScreen(),
-        // AppRoutes.allHotels: (context) => const AllHotels(),
+        AppRoutes.allHotels: (context) => const AllHotels(),
         // AppRoutes.hotelDetail: (context) => const HotelDetail()
       },
     );
